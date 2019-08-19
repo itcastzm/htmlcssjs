@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+
+
+   <p id="example">
+        <a href="/name"  title="name">name</a>
+        <a href="/age"  title="age">age</a>
+   </p>
+    
+   <div class="main" id="main"></div>
+   <button id="backbtn" >返回</button>
+
+
+    <script>
+        
+        ;(function(){
+            var examplebox = document.getElementById('example')
+            var mainbox = document.getElementById('main')
+            var backbtn = document.getElementById('backbtn');
+            
+            examplebox.addEventListener('click', function(e){
+                e.preventDefault();
+                var elm = e.target
+                var uri = elm.href;
+                var tlt = elm.title
+                console.log(history.state);
+                history.pushState({path:uri,title:tlt}, null, uri)
+                console.log(history.state);
+                mainbox.innerHTML = 'current page is ' + tlt
+                
+            })
+
+
+            backbtn.addEventListener('click', function() {
+                history.go(-1);
+            });
+
+
+
+            window.addEventListener('popstate', function(e){ 
+                console.log('=====================');
+                console.log(e)
+                var state = e.state
+                mainbox.innerHTML = 'current page is ' + state.title
+            })
+        })()
+
+
+    </script>
+    
+</body>
+</html>

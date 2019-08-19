@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hash路由</title>
+    <style>
+            a {
+                text-decoration: none;
+                border: 1px solid yellow
+            }
+    </style>
+</head>
+<body>
+  
+    <a  href="#index">index 首页</a>
+    <a  href="#user">user 用户</a>
+    <a  href="#about">about 关于 </a>
+    
+    
+    
+    <script>
+       
+        window.addEventListener('hashchange', function(e) {
+            console.log(location.href)
+            console.log("window hashchange", e)
+        })
+  
+    </script>
+</body>
+</html>
