@@ -7,39 +7,49 @@
     <title>Document</title>
 
     <style>
-        a {
-            text-decoration: none;
-        }
+            a {
+                text-decoration: none;
+                border: 1px solid gray;
+                margin:  15px;
+                padding: 5px;
+                display: inline-block;              
+                vertical-align: middle;
+            }
+            nav {
+                margin:0 auto;
+                text-align: center;
+                height: 60px;              
+            }
+            #root , .oper {
+                margin: 0 auto;
+                text-align: center;
+            }
     </style>
 </head>
 <body>
+    <!-- 1 导航区 -->
+   <nav  id="example">
+        <a  href="/index">index 首页</a>
+        <a  href="/user">user 用户</a>
+        <a  href="/about">about 关于 </a>
+   </nav>
+   <!-- 2 内容区 -->
+   <div class="main" id="root"></div>
 
-    
-
-
-
-   <p id="example">
-        <a href="/name"  title="name">name</a>
-        <a href="/age"  title="age">age</a>
-   </p>
-    
-   <div class="main" id="main"></div>
-   <button id="backbtn" >返回</button>
-
-
+   <div class="oper"><button id="backbtn" >返回</button></div>
+  
     <script>
         
         ;(function(){
             var examplebox = document.getElementById('example')
-            var mainbox = document.getElementById('main')
+            var mainbox = document.getElementById('root')
             var backbtn = document.getElementById('backbtn');
             
             examplebox.addEventListener('click', function(e){
                 e.preventDefault();
                 var elm = e.target
                 var uri = elm.href;
-                var tlt = elm.title
-                console.log(history.state);
+                var tlt = elm.href.split('\/')[3]; 
                 history.pushState({path:uri,title:tlt}, null, uri)
                 console.log(history.state);
                 mainbox.innerHTML = 'current page is ' + tlt

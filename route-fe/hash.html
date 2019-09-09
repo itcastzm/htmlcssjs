@@ -8,25 +8,42 @@
     <style>
             a {
                 text-decoration: none;
-                border: 1px solid yellow
+                border: 1px solid gray;
+                margin:  15px;
+                padding: 5px;
+                display: inline-block;              
+                vertical-align: middle;
+            }
+            nav {
+                margin:0 auto;
+                text-align: center;
+                height: 60px;              
+            }
+
+            .root {
+                text-align: center;
             }
     </style>
 </head>
 <body>
-  
-    <a  href="#index">index 首页</a>
-    <a  href="#user">user 用户</a>
-    <a  href="#about">about 关于 </a>
-    
-    
+    <!-- 1. 导航区 -->
+    <nav>
+        <a  href="#index">index 首页</a>
+        <a  href="#user">user 用户</a>
+        <a  href="#about">about 关于 </a>
+    </nav>
+    <!-- 页面内容区 -->
+    <div class="root"></div>
     
     <script>
-       
+
+        let root = document.querySelector('.root');
+
+        // window      
         window.addEventListener('hashchange', function(e) {
-            console.log(location.href)
-            console.log("window hashchange", e)
+            console.log("window hashchange", e, location)
+            root.innerHTML = location.hash; 
         })
-  
     </script>
 </body>
 </html>
